@@ -50,7 +50,8 @@ public class MainScreen extends javax.swing.JPanel
         return usernameLabel;
     }
 
-    Timer timer = new Timer(500, new ActionListener() {
+    Timer timer = new Timer(500, new ActionListener() 
+    {
 
         @Override
         public void actionPerformed(ActionEvent e)
@@ -58,6 +59,29 @@ public class MainScreen extends javax.swing.JPanel
             Date date = new Date();
             usernameLabel.setText(MainFrame.username);
             dateLabel.setText("Today is " + date);
+            Connection con = null;
+            con = app.MainFrame.setConnection(con);
+            if (!dishesComboBox.getSelectedItem().equals("-"))
+            {
+                String a = "-";
+                String b = "-";
+                try
+                {
+                    Statement stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                    System.out.println(dishesComboBox.getSelectedItem());
+                    ResultSet rs = stm.executeQuery("SELECT * FROM DISHES WHERE DISH_NAME = '" + dishesComboBox.getSelectedItem() + "'");
+                    a = "" + rs.getObject("CALORIES");
+                    b = "" + rs.getObject("DAYS");
+                    stm.close();
+                    rs.close();
+                    con.close();
+                } catch (SQLException ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
+                caloriesLabel.setText("Calories: " + a);
+                daysSinceLabel.setText("Days since last eaten: " + b);
+            }
         }
     });
     
@@ -92,7 +116,6 @@ public class MainScreen extends javax.swing.JPanel
             }
         });
 
-        usernameLabel.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(100, 100, 100));
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         usernameLabel.setText(" ");
@@ -181,12 +204,7 @@ public class MainScreen extends javax.swing.JPanel
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -203,12 +221,20 @@ public class MainScreen extends javax.swing.JPanel
                         .addGap(32, 32, 32)
                         .addComponent(lunchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(caloriesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(dinnerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))
                     .addComponent(daysSinceLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 168, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(168, 168, 168))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +253,7 @@ public class MainScreen extends javax.swing.JPanel
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lunchButton)
                     .addComponent(dinnerButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
