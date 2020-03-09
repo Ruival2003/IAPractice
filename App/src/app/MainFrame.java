@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 public class MainFrame extends javax.swing.JFrame
 {
     public static String username;
+    public static String firstName;
+    public static String lastName;
     public static ArrayList <JPanel> panels = new ArrayList<>();
     public static ArrayList <JPanel> mainPanels = new ArrayList<>();
 
@@ -33,14 +35,17 @@ public class MainFrame extends javax.swing.JFrame
         LogIn li = new LogIn();
         CreateNewAccount cna = new CreateNewAccount();
         MainScreen ms = new MainScreen(username);
+        AddNewDish and = new AddNewDish(ms);
 
         this.add(li);
         this.add(cna);
         this.add(ms);
+        this.add(and);
         
         panels.add(li);
         panels.add(cna);
         panels.add(ms);
+        panels.add(and);
         
         Rectangle r = this.getContentPane().getBounds();
         
@@ -52,7 +57,7 @@ public class MainFrame extends javax.swing.JFrame
         
         setPanelVisible(0);
         
-        this.setLocation(750, 350);
+        this.setLocation(400, 200);
     }
     
 
