@@ -5,19 +5,34 @@
  */
 package app;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author ruivsan21
  */
 public class MealPlanDone extends javax.swing.JPanel
 {
+    Timer t = new Timer(500, new ActionListener() 
+    {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dinnerDishLabel.setText(MainFrame.dinner);
+            lunchDishLabel.setText(MainFrame.lunch);
+            dinnerCaloriesLabel.setText(MainFrame.dinnerCal+" calories");
+            lunchCaloriesLabel.setText(MainFrame.lunchCal+" calories");
+        }
+    });
     /**
      * Creates new form MealPlanDone
      */
     public MealPlanDone()
     {
         initComponents();
+        t.start();
     }
 
     /**
@@ -27,8 +42,7 @@ public class MealPlanDone extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -101,19 +115,19 @@ public class MealPlanDone extends javax.swing.JPanel
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lunchDishLabel)
                 .addGap(18, 18, 18)
+                .addComponent(lunchDishLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lunchCaloriesLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(dinnerDishLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dinnerCaloriesLabel)
                 .addGap(34, 34, 34)
                 .addComponent(comeBackDateLabel)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

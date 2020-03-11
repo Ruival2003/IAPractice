@@ -99,8 +99,7 @@ public class MainScreen extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         usernameLabel = new javax.swing.JLabel();
         dateLabel = new javax.swing.JLabel();
@@ -118,10 +117,8 @@ public class MainScreen extends javax.swing.JPanel
         clearTableLabel = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
 
-        addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseMoved(java.awt.event.MouseEvent evt)
-            {
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
                 formMouseMoved(evt);
             }
         });
@@ -135,10 +132,8 @@ public class MainScreen extends javax.swing.JPanel
         dateLabel.setText(" ");
 
         dishesComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-" }));
-        dishesComboBox.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        dishesComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dishesComboBoxActionPerformed(evt);
             }
         });
@@ -151,25 +146,19 @@ public class MainScreen extends javax.swing.JPanel
         addNewDishLabel.setForeground(new java.awt.Color(50, 50, 50));
         addNewDishLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addNewDishLabel.setText("Create New Dish");
-        addNewDishLabel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseMoved(java.awt.event.MouseEvent evt)
-            {
+        addNewDishLabel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
                 addNewDishLabelMouseMoved(evt);
             }
         });
-        addNewDishLabel.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        addNewDishLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addNewDishLabelMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addNewDishLabelMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 addNewDishLabelMouseExited(evt);
             }
         });
@@ -179,24 +168,19 @@ public class MainScreen extends javax.swing.JPanel
         caloriesLabel.setText("Calories: -");
 
         dishesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {"Lunch", null, null, null},
                 {"Dinner", null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 " ", "Dish", "Last Eaten", "Calories"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
@@ -206,28 +190,22 @@ public class MainScreen extends javax.swing.JPanel
         jLabel2.setText("Today's Plan");
 
         lunchButton.setText("Add to Lunch");
-        lunchButton.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        lunchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lunchButtonMouseClicked(evt);
             }
         });
 
         dinnerButton.setText("Add to Dinner");
-        dinnerButton.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        dinnerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dinnerButtonMouseClicked(evt);
             }
         });
 
         confirmMealPlanButton.setText("Confirm Meal Plan");
-        confirmMealPlanButton.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        confirmMealPlanButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmMealPlanButtonMouseClicked(evt);
             }
         });
@@ -239,18 +217,14 @@ public class MainScreen extends javax.swing.JPanel
         clearTableLabel.setForeground(new java.awt.Color(100, 100, 100));
         clearTableLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         clearTableLabel.setText("Clear Table");
-        clearTableLabel.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        clearTableLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 clearTableLabelMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 clearTableLabelMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 clearTableLabelMouseExited(evt);
             }
         });
@@ -276,17 +250,6 @@ public class MainScreen extends javax.swing.JPanel
                         .addComponent(dinnerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))
                     .addComponent(daysSinceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(addNewDishLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(confirmMealPlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(clearTableLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,15 +260,23 @@ public class MainScreen extends javax.swing.JPanel
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dishesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(addNewDishLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(confirmMealPlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(clearTableLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,6 +360,8 @@ public class MainScreen extends javax.swing.JPanel
                 rs.next();
                 a = "" + rs.getObject("CALORIES");
                 b = "" + rs.getObject("DAYS");
+                MainFrame.lunch = (String) dishesComboBox.getSelectedItem();
+                MainFrame.lunchCal = (int) rs.getObject("CALORIES");
                 stm.close();
                 rs.close();
                 con.close();
@@ -401,8 +374,8 @@ public class MainScreen extends javax.swing.JPanel
         }
         else
         {
-            dishesTable.setValueAt("-", 1, 2);
-            dishesTable.setValueAt("-", 1, 3);
+            dishesTable.setValueAt("-", 0, 2);
+            dishesTable.setValueAt("-", 0, 3);
         }
     }//GEN-LAST:event_lunchButtonMouseClicked
 
@@ -422,6 +395,8 @@ public class MainScreen extends javax.swing.JPanel
                 rs.next();
                 a = "" + rs.getObject("CALORIES");
                 b = "" + rs.getObject("DAYS");
+                MainFrame.dinner = (String) dishesComboBox.getSelectedItem();
+                MainFrame.dinnerCal = (int) rs.getObject("CALORIES");
                 stm.close();
                 rs.close();
                 con.close();
@@ -470,6 +445,7 @@ public class MainScreen extends javax.swing.JPanel
         else
         {
             MainFrame.setPanelVisible(4);
+            MainFrame.mealPlanDone = true;
         }
     }//GEN-LAST:event_confirmMealPlanButtonMouseClicked
 

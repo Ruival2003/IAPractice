@@ -21,9 +21,13 @@ public class MainFrame extends javax.swing.JFrame
     public static String username;
     public static String firstName;
     public static String lastName;
+    public static String lunch;
+    public static int lunchCal;
+    public static String dinner;
+    public static int dinnerCal;
     public static ArrayList <JPanel> panels = new ArrayList<>();
     public static ArrayList <JPanel> mainPanels = new ArrayList<>();
-    public static boolean mealPlanDone = false;
+    public static boolean mealPlanDone;
 
     /**
      * Creates new form MainFrame
@@ -31,6 +35,12 @@ public class MainFrame extends javax.swing.JFrame
     public MainFrame()
     {
         initComponents();
+        
+        lunch = null;
+        lunchCal = 0;
+        dinner = null;
+        dinnerCal = 0;
+        mealPlanDone = false;
         
         LogIn li = new LogIn();
         CreateNewAccount cna = new CreateNewAccount();
