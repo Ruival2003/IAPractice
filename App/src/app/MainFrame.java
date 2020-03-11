@@ -23,7 +23,7 @@ public class MainFrame extends javax.swing.JFrame
     public static String lastName;
     public static ArrayList <JPanel> panels = new ArrayList<>();
     public static ArrayList <JPanel> mainPanels = new ArrayList<>();
-
+    public static boolean mealPlanDone = false;
 
     /**
      * Creates new form MainFrame
@@ -36,16 +36,19 @@ public class MainFrame extends javax.swing.JFrame
         CreateNewAccount cna = new CreateNewAccount();
         MainScreen ms = new MainScreen(username);
         AddNewDish and = new AddNewDish(ms);
+        MealPlanDone mpd = new MealPlanDone();
 
         this.add(li);
         this.add(cna);
         this.add(ms);
         this.add(and);
+        this.add(mpd);
         
         panels.add(li);
         panels.add(cna);
         panels.add(ms);
         panels.add(and);
+        panels.add(mpd);
         
         Rectangle r = this.getContentPane().getBounds();
         
