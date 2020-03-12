@@ -444,6 +444,19 @@ public class MainScreen extends javax.swing.JPanel
         }
         else
         {
+            Connection con = null;
+            try
+            {
+                Statement stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                ResultSet rs = stm.executeQuery("SELECT * FROM MEAL_PLAN");
+                rs.updateBoolean("DONE", true);
+                rs.close();
+                stm.close();
+                con.close();
+            } catch (SQLException ex)
+            {
+                System.out.println(ex.getMessage());
+            }
             MainFrame.setPanelVisible(4);
             MainFrame.mealPlanDone = true;
         }

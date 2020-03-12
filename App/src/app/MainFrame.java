@@ -3,7 +3,13 @@ package app;
 import java.awt.Rectangle;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /*
@@ -28,49 +34,78 @@ public class MainFrame extends javax.swing.JFrame
     public static ArrayList <JPanel> panels = new ArrayList<>();
     public static ArrayList <JPanel> mainPanels = new ArrayList<>();
     public static boolean mealPlanDone;
+    public static Date d;
+    
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame()
-    {
-        initComponents();
-        
-        lunch = null;
-        lunchCal = 0;
-        dinner = null;
-        dinnerCal = 0;
-        mealPlanDone = false;
-        
-        LogIn li = new LogIn();
-        CreateNewAccount cna = new CreateNewAccount();
-        MainScreen ms = new MainScreen(username);
-        AddNewDish and = new AddNewDish(ms);
-        MealPlanDone mpd = new MealPlanDone();
-
-        this.add(li);
-        this.add(cna);
-        this.add(ms);
-        this.add(and);
-        this.add(mpd);
-        
-        panels.add(li);
-        panels.add(cna);
-        panels.add(ms);
-        panels.add(and);
-        panels.add(mpd);
-        
-        Rectangle r = this.getContentPane().getBounds();
-        
-        for (int i = 0; i < panels.size(); i++)
+    {   
+        d =  new Date();
+        Connection con = null;
+        con = setConnection(con);
+        try
         {
-            panels.get(i).setSize(r.width, r.height);
-            panels.get(i).setLocation(0, 0);
+            Statement stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stm.executeQuery("SELECT * FROM MEAL_PLAN");
+            rs.next();
+            initComponents();
+        
+            lunch = null;
+            lunchCal = 0;
+            dinner = null;
+            dinnerCal = 0;
+            mealPlanDone = false;
+
+            LogIn li = new LogIn();
+            CreateNewAccount cna = new CreateNewAccount();
+            MainScreen ms = new MainScreen(username);
+            AddNewDish and = new AddNewDish(ms);
+            MealPlanDone mpd = new MealPlanDone();
+
+            this.add(li);
+            this.add(cna);
+            this.add(ms);
+            this.add(and);
+            this.add(mpd);
+
+            panels.add(li);
+            panels.add(cna);
+            panels.add(ms);
+            panels.add(and);
+            panels.add(mpd);
+
+            Rectangle r = this.getContentPane().getBounds();
+
+            for (int i = 0; i < panels.size(); i++)
+            {
+                panels.get(i).setSize(r.width, r.height);
+                panels.get(i).setLocation(0, 0);
+            }
+            
+            if (rs.getInt("C_DAY") != d.getDate() || rs.getInt("C_MONTH") != d.getMonth() || rs.getInt("C_YEAR") != d.getYear())
+            {
+                rs.updateInt("C_DAY", d.getDate());
+                rs.updateInt("C_MONTH", d.getMonth());
+                rs.updateInt("C_YEAR", d.getYear());
+                rs.updateBoolean("DONE", false);
+            }
+            setPanelVisible(0);
+
+            this.setLocation(400, 200);
+            rs.close();
+            stm.close();
+            con.close();
+        } 
+        
+        catch (SQLException ex)
+        {
+            System.out.println(ex.getMessage());
         }
         
-        setPanelVisible(0);
         
-        this.setLocation(400, 200);
+        
     }
     
 

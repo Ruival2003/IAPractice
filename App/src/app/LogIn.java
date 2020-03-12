@@ -142,6 +142,8 @@ public class LogIn extends javax.swing.JPanel
         {
             Statement stm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = stm.executeQuery("SELECT * FROM USERS");
+            ResultSet rs1 = stm.executeQuery("SELECT * FROM MEAL_PLAN");
+            rs1.next();
             boolean check = true;
             while (rs.next())
             {
@@ -159,10 +161,19 @@ public class LogIn extends javax.swing.JPanel
             }
             else
             {
-                MainFrame.username = usernameTextField.getText();
-                MainFrame.setPanelVisible(2);
+                if (rs1.getBoolean("DONE") == false)
+                {
+                    MainFrame.username = usernameTextField.getText();
+                    MainFrame.setPanelVisible(2);
+                }
+                else
+                {
+                    MainFrame.username = usernameTextField.getText();
+                    MainFrame.setPanelVisible(4);
+                }
             }
             rs.close();
+            rs1.close();
             stm.close();
             con.close();
         } catch (SQLException ex)
